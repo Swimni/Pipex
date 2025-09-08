@@ -3,39 +3,65 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+         #
+#    By: mbuisson <mbuisson@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/08 13:06:52 by nguinot-          #+#    #+#              #
-#    Updated: 2025/07/08 13:12:48 by nguinot-         ###   ########.fr        #
+#    Created: 2025/07/14 16:38:34 by mbuisson          #+#    #+#              #
+#    Updated: 2025/08/07 15:48:51 by mbuisson         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = pipex
 
-CC = cc
+
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = create_pipe_chain.c exec_cmd.c ft_split.c get_next_line_utils.c \
-get_next_line.c here_doc.c libft.c main.c path_utils.c pipex.c utils.c \
+
+SRCS = execute_cmd.c \
+	   get_cmd_path.c \
+	   splitcmd.c \
+	   split.c \
+	   strjoin.c \
+	   utilspipex.c \
+	   utilsmain.c \
+	   utilsmain2.c \
+	   utilsmain3.c \
+	   main.c 
+
+SRC_BONUS = execute_cmd_bonus.c \
+	   get_cmd_path.c \
+	   splitcmd.c \
+	   split.c \
+	   strjoin.c \
+	   utilspipex.c \
+	   utilsmainbonus.c \
+	   utilsmainbonus2.c \
+	   utilsmainbonus3.c \
+	   utilsmainbonus4.c \
+	   mainbonus.c 
 
 OBJS = $(SRCS:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-HEADER = pipex.h
 
-all : $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJ_BONUS)
+
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(NAME)_bonus
+
+bonus: $(OBJ_BONUS)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) -o $(NAME)_bonus
 
 re: fclean all
+
 
 .PHONY: all clean fclean re

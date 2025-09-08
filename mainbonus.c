@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_cmd.c                                         :+:      :+:    :+:   */
+/*   mainbonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 13:14:37 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/07/08 16:02:46 by nguinot-         ###   ########.fr       */
+/*   Created: 2025/07/16 14:19:17 by mbuisson          #+#    #+#             */
+/*   Updated: 2025/08/22 14:41:51 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	exec_cmd(char *cmd, char **envp)
+int	check_argc(int argc, char **argv)
 {
-	char	**args;
-	char	*path;
-
-	args = ft_split(cmd, ' ');
-	if (!args || !args[0])
+	if (argc != 5)
 	{
-		free_split(args);
-		error_exit("Error: split");
+		fprintf(stderr, "usage : %s infile \"cmd1\" \"cmd2\" outfile\n", argv[0]);
+		exit (1);
 	}
-	path = find_cmd_path(args[0], envp);
-	if (!path)
-	{
-		free_split(args);
-		error_exit("Command not found");
-	}
-	execve(path, args, envp);
-	perror("execve failed");
-	free(path);
-	free_split(args);
-	exit(1);
+	return (0);
 }
+
+int	main(int argc, char **argv, char **envp)
+{
+	t_exec	ex;
+	int		l;
+	check_argc(argc, argv);
+	init_exec(&ex, argc, argv, envp);
+	while_fork(&ex);
+	free(ex.pipes);
+	l = 0;
+	while (l < ex.n_cmd)
+	{
+		wait(NULL);
+		l++;
+	}
+	return (0);
+}
+

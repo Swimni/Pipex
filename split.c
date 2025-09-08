@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mbuisson <mbuisson@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/07 13:13:11 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/07/08 12:55:37 by nguinot-         ###   ########.fr       */
+/*   Created: 2025/07/11 13:49:33 by mbuisson          #+#    #+#             */
+/*   Updated: 2025/07/22 00:04:18 by mbuisson         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+size_t	ft_strlcpy(char*dest, const char *src, size_t dest_size)
+{
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	len = 0;
+	while (src[len])
+	{
+		len++;
+	}
+	if (dest_size == 0)
+		return (len);
+	while (src[i] && i < dest_size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (len);
+}
 
 int	count_words(char const *s, char c)
 {
@@ -26,7 +48,7 @@ int	count_words(char const *s, char c)
 		if (s[i] != c && s[i] != '\0')
 			count++;
 		while (s[i] != c && s[i] != '\0')
-		i++;
+			i++;
 	}
 	return (count);
 }
@@ -41,7 +63,7 @@ int	len_word(char const *s, char c)
 	return (i);
 }
 
-void	free_all(char **tab, int i)
+static void	free_all(char **tab, int i)
 {
 	while (i--)
 		free(tab[i]);
@@ -55,7 +77,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	result = malloc((count_words(s, c) + 1) * sizeof(char *));
+	result = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (!result)
 		return (NULL);
 	i = 0;

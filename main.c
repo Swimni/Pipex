@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 14:26:17 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/07/08 16:06:05 by nguinot-         ###   ########.fr       */
+/*   Created: 2025/07/11 17:14:49 by mbuisson          #+#    #+#             */
+/*   Updated: 2025/08/22 14:41:42 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,28 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	px;
-	int		here_doc;
+	pid_t	pid1;
+	pid_t	pid2;
 
-	if (argc < 5)
-	{
-		write(2, "Usage: ./pipex infile cmd1 cmd2 outfile\n", 40);
-		return (1);
-	}
-	here_doc = ft_strncmp(argv[1], "here_doc", 9) == 0;
-	px.envp = envp;
-	if (here_doc)
-		init_here_doc(&px, argv, argc, envp);
-	else
-		init_pipex(&px, argv, argc, envp);
-	if (px.cmd_count < 1)
-		return (write(2, "No command given\n", 18), 1);
-	px.pipes = malloc(sizeof(int) * 2 * (px.cmd_count - 1));
-	if (!px.pipes)
-		return (perror("malloc"), 1);
-	create_pipe_chain(&px);
-	free(px.pipes);
+	check_argc(argc, argv);
+	check_acces_infile(argv);
+	px.infile = open(argv[1], O_RDONLY);
+	check_infile(px.infile);
+	check_acces_outfile(argc, argv, px.infile);
+	px.outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	check_outfile(px.outfile, px.infile);
+	if (pipe(px.fd) == -1)
+		return (perror("pipe"), 1);
+	pid1 = fork();
+	if (pid1 == -1)
+		check_pid(pid1, px.fd, px.infile, px.outfile);
+	if (pid1 == 0)
+		exec_pid1(&px, argv, envp);
+	pid2 = fork();
+	check_pid(pid2, px.fd, px.infile, px.outfile);
+	if (pid2 == 0)
+		exec_pid2(&px, argv, envp);
+	close_all_fds(&px);
+	wait_all(pid1, pid2);
 	return (0);
 }
