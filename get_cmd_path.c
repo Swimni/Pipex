@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 14:08:15 by mbuisson          #+#    #+#             */
-/*   Updated: 2025/08/22 14:42:36 by nguinot-         ###   ########.fr       */
+/*   Created: 2025/09/08 15:27:36 by nguinot-          #+#    #+#             */
+/*   Updated: 2025/09/08 15:31:35 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,3 @@ char	*get_cmd_path(char *cmd, char **envp)
 	i = 0;
 	return (get_cmd(path, cmd, i));
 }
-

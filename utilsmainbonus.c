@@ -3,76 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utilsmainbonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbuisson <mbuisson@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/21 21:15:03 by mbuisson          #+#    #+#             */
-/*   Updated: 2025/08/11 16:53:55 by mbuisson         ###   ########.fr       */
+/*   Created: 2025/09/08 15:28:40 by nguinot-          #+#    #+#             */
+/*   Updated: 2025/09/08 15:31:04 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// void	while_fork(char **envp, int argc, int **pipes, char **argv)
-// {
-// 	int		i;
-// 	int		n_cmd;
-// 	int		infile;
-// 	int		outfile;
-// 	int		err;
-// 	pid_t	pid;
-
-// 	n_cmd = argc - 3;
-// 	err = infile_outfile(&infile, &outfile, argc, argv);
-// 	if (err != 0)
-// 	{
-// 		close(infile);
-// 		close_free_pipes(pipes, argc - 3);
-// 		free(pipes);
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	i = -1;
-// 	while (++i < n_cmd)
-// 	{
-// 		pid = fork();
-// 		if (pid == 0)
-// 		{
-// 			if (i == 0)
-// 				first_cmd(infile, pipes, i);
-// 			else if (i == n_cmd -1)
-// 				last_cmd(outfile, pipes, i);
-// 			else
-// 				middle_cmd(pipes, i);
-// 			close_everything(infile, outfile, n_cmd, pipes);
-// 			execute_cmd_bonus(argv[i + 2], envp);
-// 		}
-// 	}
-// 	close_both(infile, outfile);
-// }
-
-// void	while_fork(int argc, t_exec *ex)
-// {
-// 	int		err;
-// 	pid_t	pid;
-
-// 	ex->n_cmd = argc - 3;
-// 	err = infile_outfile(&ex->infile, &ex->outfile, argc, ex->argv);
-// 	if (err != 0)
-// 	{
-// 		close(ex->infile);
-// 		close_free_pipes(ex->pipes, argc - 3);
-// 		free(ex->pipes);
-// 		exit(EXIT_FAILURE);
-// 	}
-// 	ex->i = -1;
-// 	while (++ex->i < ex->n_cmd)
-// 	{
-// 		pid = fork();
-// 		if (pid == 0)
-// 			exec_child(ex);
-// 	}
-// 	//close_everything(ex->infile, ex->outfile, ex->n_cmd, ex ->pipes);
-// 	close_both(ex->infile, ex->outfile);
-// }
 
 void	while_fork(t_exec *ex)
 {

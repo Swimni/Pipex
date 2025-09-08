@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 14:19:17 by mbuisson          #+#    #+#             */
-/*   Updated: 2025/08/22 14:41:51 by nguinot-         ###   ########.fr       */
+/*   Created: 2025/09/08 15:27:48 by nguinot-          #+#    #+#             */
+/*   Updated: 2025/09/08 15:31:54 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_exec	ex;
 	int		l;
+
 	check_argc(argc, argv);
 	init_exec(&ex, argc, argv, envp);
 	while_fork(&ex);
@@ -38,4 +39,3 @@ int	main(int argc, char **argv, char **envp)
 	}
 	return (0);
 }
-

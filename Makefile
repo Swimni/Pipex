@@ -3,13 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbuisson <mbuisson@student.42.fr>          +#+  +:+       +#+         #
+#    By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/14 16:38:34 by mbuisson          #+#    #+#              #
-#    Updated: 2025/08/07 15:48:51 by mbuisson         ###   ########.fr        #
+#    Created: 2025/09/08 15:27:53 by nguinot-          #+#    #+#              #
+#    Updated: 2025/09/08 15:30:41 by nguinot-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = pipex
 
