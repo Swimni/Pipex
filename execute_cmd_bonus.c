@@ -6,7 +6,7 @@
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 15:30:08 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/09/09 10:53:21 by nguinot-         ###   ########.fr       */
+/*   Updated: 2025/09/09 20:23:20 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_putstr_fd(char *s, int fd)
 		return ;
 	while (s[i])
 	{
-		write(fd, s[i], 1);
+		write(fd, &s[i], 1);
 		i++;
 	}
 }
