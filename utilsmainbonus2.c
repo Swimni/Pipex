@@ -6,7 +6,7 @@
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 15:28:45 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/09/08 15:31:07 by nguinot-         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:58:17 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	check_acces_infile_bonus(char **argv)
 {
 	if (!argv || !argv[1])
 	{
-		fprintf(stderr, "infile access: invalid argument\n");
+		write(2, "infile access: invalid argument\n", 32);
 		return ;
 	}
 	if (access(argv[1], R_OK) == -1)

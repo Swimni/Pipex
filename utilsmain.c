@@ -6,7 +6,7 @@
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 15:28:24 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/09/08 15:30:51 by nguinot-         ###   ########.fr       */
+/*   Updated: 2025/09/09 10:59:57 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	check_argc(int argc, char **argv)
 {
 	if (argc != 5)
 	{
-		fprintf(stderr, "usage : %s infile \"cmd1\" \"cmd2\" outfile\n", argv[0]);
+		ft_putstr_fd("usage: ", 2);
+		ft_putstr_fd(argv[0], 2);
+		ft_putstr_fd( "infile \"cmd1\" \"cmd2\" outfile\n", 2);
 		exit (1);
 	}
 	return (0);
