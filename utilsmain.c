@@ -6,7 +6,7 @@
 /*   By: nguinot- <nguinot-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 15:28:24 by nguinot-          #+#    #+#             */
-/*   Updated: 2025/09/09 20:27:53 by nguinot-         ###   ########.fr       */
+/*   Updated: 2025/10/18 16:36:17 by nguinot-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,6 @@ int	check_pid(pid_t pid, int fd[2], int infile, int outfile)
 	}
 	return (0);
 }
-
-// void	check_acces_infile(char **argv)
-// {
-// 	if (access(argv[1], R_OK) == -1)
-// 	{
-// 		perror("infile access");
-// 		exit(EXIT_FAILURE);
-// 	}
-// }
 
 void	check_acces_infile(char **argv)
 {
